@@ -60,6 +60,10 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 600; }
   padding: 0 2rem;
 }
 
+@media (max-width: 480px) {
+  .container { padding: 0 1.25rem; }
+}
+
 /* ── Buttons ───────────────────────────────────────────────── */
 .btn {
   display: inline-flex;

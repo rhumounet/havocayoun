@@ -184,8 +184,17 @@
 }
 
 @media (max-width: 768px) {
-  .hero__inner { grid-template-columns: 1fr; }
+  .hero__inner {
+    grid-template-columns: 1fr;
+    padding-top: calc(var(--nav-height) + 2.5rem);
+    padding-bottom: 4rem;
+  }
   .hero__initials { display: none; }
   .hero__title { font-size: clamp(2.8rem, 9vw, 4rem); }
+}
+@media (max-width: 480px) {
+  .hero__actions { flex-direction: column; }
+  .hero__actions .btn { justify-content: center; width: 100%; }
+  .hero__decor { width: 300px; height: 300px; }
 }
 </style>
