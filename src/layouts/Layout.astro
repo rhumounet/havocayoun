@@ -1,4 +1,6 @@
 ---
+import ThemeSwitcher from '../components/ThemeSwitcher.astro';
+
 interface Props {
   title?: string;
   description?: string;
@@ -11,7 +13,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="foret">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,6 +22,14 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Applique le thème sauvegardé avant le premier rendu (évite le flash) -->
+    <script is:inline>
+      (function() {
+        var t = localStorage.getItem('eva-theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,6 +43,7 @@ const {
   </head>
   <body>
     <slot />
+    <ThemeSwitcher />
   </body>
 </html>
 

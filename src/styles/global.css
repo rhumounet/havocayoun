@@ -1,5 +1,27 @@
 /* ── Variables ─────────────────────────────────────────────── */
-:root {
+
+/* Thème 1 — Vert forêt + sable (défaut) */
+:root,
+[data-theme="foret"] {
+  --color-primary:      #2D4A3E;
+  --color-primary-dark: #1F3529;
+  --color-accent:       #C9954A;
+  --color-accent-hover: #B07D3A;
+  --color-bg:           #FAF6EF;
+  --color-bg-alt:       #EDE7DC;
+  --color-white:        #FDFAF5;
+  --color-text:         #2C2C2C;
+  --color-text-light:   #6B6056;
+  --color-border:       #D6CDBF;
+
+  --color-primary-rgb:  45, 74, 62;
+  --color-accent-rgb:   201, 149, 74;
+  --color-bg-rgb:       250, 246, 239;
+  --color-white-rgb:    253, 250, 245;
+}
+
+/* Thème 2 — Bleu ardoise + cuivre */
+[data-theme="ardoise"] {
   --color-primary:      #1E3A5F;
   --color-primary-dark: #152D4A;
   --color-accent:       #B5763A;
@@ -11,6 +33,32 @@
   --color-text-light:   #6B6056;
   --color-border:       #D6CDBF;
 
+  --color-primary-rgb:  30, 58, 95;
+  --color-accent-rgb:   181, 118, 58;
+  --color-bg-rgb:       244, 239, 230;
+  --color-white-rgb:    253, 250, 246;
+}
+
+/* Thème 3 — Gris anthracite + or doux */
+[data-theme="anthracite"] {
+  --color-primary:      #2E2E2E;
+  --color-primary-dark: #1A1A1A;
+  --color-accent:       #C9A84C;
+  --color-accent-hover: #B08E3A;
+  --color-bg:           #F7F5F0;
+  --color-bg-alt:       #EDEBE5;
+  --color-white:        #FDFDFB;
+  --color-text:         #3A3A3A;
+  --color-text-light:   #706D65;
+  --color-border:       #D9D6CE;
+
+  --color-primary-rgb:  46, 46, 46;
+  --color-accent-rgb:   201, 168, 76;
+  --color-bg-rgb:       247, 245, 240;
+  --color-white-rgb:    253, 253, 251;
+}
+
+:root {
   --font-serif:  'Cormorant Garamond', Georgia, serif;
   --font-sans:   'Inter', system-ui, sans-serif;
 

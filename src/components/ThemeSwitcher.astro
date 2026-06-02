@@ -1,0 +1,89 @@
+---
+const themes = [
+  { id: 'foret',      label: 'Vert forêt',       color: '#2D4A3E' },
+  { id: 'ardoise',    label: 'Bleu ardoise',      color: '#1E3A5F' },
+  { id: 'anthracite', label: 'Gris anthracite',   color: '#2E2E2E' },
+];
+---
+
+<div class="ts" role="group" aria-label="Aperçu des thèmes">
+  <span class="ts__label">Thème</span>
+  {themes.map(t => (
+    <button
+      class="ts__swatch"
+      data-theme-id={t.id}
+      style={`--swatch:${t.color}`}
+      title={t.label}
+      aria-label={t.label}
+    />
+  ))}
+</div>
+
+<script>
+  const KEY = 'eva-theme';
+  const root = document.documentElement;
+
+  function apply(id: string) {
+    root.setAttribute('data-theme', id);
+    localStorage.setItem(KEY, id);
+    document.querySelectorAll<HTMLElement>('.ts__swatch').forEach(b => {
+      b.classList.toggle('active', b.dataset.themeId === id);
+      b.setAttribute('aria-pressed', String(b.dataset.themeId === id));
+    });
+  }
+
+  // Apply saved or default theme immediately
+  apply(localStorage.getItem(KEY) ?? 'foret');
+
+  document.querySelectorAll<HTMLElement>('.ts__swatch').forEach(btn => {
+    btn.addEventListener('click', () => apply(btn.dataset.themeId!));
+  });
+</script>
+
+<style>
+.ts {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,0,0,0.09);
+  border-radius: 2rem;
+  padding: 0.45rem 0.8rem;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.11);
+}
+
+.ts__label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+  padding-right: 0.1rem;
+  user-select: none;
+}
+
+.ts__swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--swatch);
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s, box-shadow 0.15s;
+  flex-shrink: 0;
+}
+.ts__swatch:hover {
+  transform: scale(1.18);
+}
+.ts__swatch.active {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--swatch);
+}
+</style>
