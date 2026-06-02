@@ -1,0 +1,170 @@
+---
+---
+
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="/" class="nav__logo">
+      <span class="nav__logo-name">Eva Hayoun</span>
+      <span class="nav__logo-sub">Avocate</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Navigation">
+      <a href="#eva" class="nav__link">À propos</a>
+      <a href="#domaines" class="nav__link">Domaines</a>
+      <a href="#contact" class="nav__link nav__link--cta">Contact</a>
+    </nav>
+
+    <button class="nav__burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-mobile">
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav__mobile" id="nav-mobile" aria-hidden="true">
+    <a href="#eva" class="nav__ml">À propos</a>
+    <a href="#domaines" class="nav__ml">Domaines</a>
+    <a href="#contact" class="nav__ml">Contact</a>
+  </div>
+</header>
+
+<script>
+  const nav = document.getElementById('nav')!;
+  const burger = nav.querySelector('.nav__burger') as HTMLButtonElement;
+  const mobile = document.getElementById('nav-mobile')!;
+
+  // Scroll opacity
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Burger
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    mobile.setAttribute('aria-hidden', String(open));
+    mobile.classList.toggle('open', !open);
+    burger.classList.toggle('open', !open);
+  });
+  mobile.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.setAttribute('aria-expanded', 'false');
+      mobile.setAttribute('aria-hidden', 'true');
+      mobile.classList.remove('open');
+      burger.classList.remove('open');
+    });
+  });
+</script>
+
+<style>
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  transition: background 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  background: rgba(26, 26, 24, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: rgba(255,255,255,0.07);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+}
+
+.nav__logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+.nav__logo-name {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.01em;
+}
+.nav__logo-sub {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.nav__link {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  transition: color 0.2s;
+}
+.nav__link:hover { color: var(--white); }
+.nav__link--cta {
+  color: var(--gold);
+  padding: 0.45rem 1.2rem;
+  border: 1px solid rgba(201,160,90,0.4);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.nav__link--cta:hover {
+  color: var(--white);
+  border-color: var(--gold);
+  background: rgba(201,160,90,0.1);
+}
+
+/* Burger */
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  width: 28px;
+  padding: 4px 0;
+}
+.nav__burger span {
+  display: block;
+  height: 1.5px;
+  background: rgba(255,255,255,0.7);
+  transition: transform 0.25s, opacity 0.25s, width 0.25s;
+  transform-origin: left center;
+}
+.nav__burger span:last-child { width: 70%; }
+.nav__burger.open span:first-child { transform: rotate(45deg) translateY(-1px); width: 100%; }
+.nav__burger.open span:last-child  { transform: rotate(-45deg) translateY(1px); width: 100%; }
+
+/* Mobile */
+.nav__mobile {
+  display: flex;
+  flex-direction: column;
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s var(--ease-out);
+}
+.nav__mobile.open { max-height: 300px; }
+.nav__ml {
+  padding: 1rem 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: color 0.15s;
+}
+.nav__ml:hover { color: var(--white); }
+
+@media (max-width: 640px) {
+  .nav__links { display: none; }
+  .nav__burger { display: flex; }
+}
+</style>

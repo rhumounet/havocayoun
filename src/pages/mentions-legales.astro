@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<Layout title="Mentions légales — Eva Hayoun" >
+  <Nav />
+  <main class="ml">
+    <div class="container ml__inner">
+      <a href="/" class="ml__back">← Retour</a>
+      <h1>Mentions légales</h1>
+
+      <section>
+        <h2>Éditeur</h2>
+        <p>Eva Hayoun, avocate au Barreau de La Roche-sur-Yon<br />
+        [Adresse] — [Code postal] La Roche-sur-Yon<br />
+        contact@eva-hayoun-avocat.fr</p>
+      </section>
+
+      <section>
+        <h2>Hébergement</h2>
+        <p>[Hébergeur, adresse]</p>
+      </section>
+
+      <section>
+        <h2>Propriété intellectuelle</h2>
+        <p>Tout le contenu de ce site est la propriété d'Eva Hayoun.
+        Reproduction interdite sans autorisation.</p>
+      </section>
+
+      <section>
+        <h2>Données personnelles</h2>
+        <p>Les données transmises via le formulaire servent uniquement à répondre à votre demande.
+        Conformément au RGPD, vous disposez d'un droit d'accès et de suppression :
+        contact@eva-hayoun-avocat.fr</p>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+.ml {
+  background: var(--cream);
+  min-height: 100svh;
+  padding: calc(var(--nav-height) + 4rem) 0 5rem;
+}
+.ml__inner {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.ml__back {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.ml__back:hover { color: var(--gold); }
+.ml__inner h1 { font-size: clamp(2rem, 4vw, 3rem); }
+.ml__inner section { display: flex; flex-direction: column; gap: 0.5rem; }
+.ml__inner h2 { font-size: 1rem; font-weight: 600; letter-spacing: 0.05em; color: var(--ink); }
+.ml__inner p { font-size: 0.92rem; font-weight: 300; color: var(--muted); line-height: 1.7; max-width: 100%; }
+</style>

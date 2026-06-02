@@ -1,0 +1,145 @@
+---
+const domaines = [
+  {
+    num: '01',
+    titre: 'Droit pénal',
+    items: ['Assistance en garde à vue', 'Instruction judiciaire', 'Comparution en tribunal', 'Procédures d\'appel'],
+  },
+  {
+    num: '02',
+    titre: 'Droit de la famille',
+    items: ['Divorce et séparation', 'Garde des enfants', 'Pension alimentaire', 'Autorité parentale'],
+  },
+  {
+    num: '03',
+    titre: 'Affaires de stupéfiants',
+    items: ['Usage simple', 'Trafic et détention', 'Garde à vue et mise en examen', 'Contrôles douaniers'],
+  },
+];
+---
+
+<section class="domaines" id="domaines">
+  <div class="container">
+    <div class="domaines__head" data-reveal>
+      <span class="eyebrow" style="color:rgba(201,160,90,0.7)">Expertise</span>
+      <h2 class="domaines__titre">Domaines<br /><em>d'intervention</em></h2>
+    </div>
+
+    <div class="domaines__grille" data-reveal-stagger>
+      {domaines.map(d => (
+        <article class="domaine">
+          <span class="domaine__num" aria-hidden="true">{d.num}</span>
+          <div class="domaine__bar" aria-hidden="true"></div>
+          <h3 class="domaine__titre">{d.titre}</h3>
+          <ul class="domaine__liste">
+            {d.items.map(it => <li>{it}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.domaines {
+  background: var(--ink);
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+.domaines__head {
+  margin-bottom: 5rem;
+}
+
+.domaines__titre {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  color: var(--white);
+  line-height: 1.1;
+  margin-top: 0.5rem;
+}
+.domaines__titre em { font-style: italic; color: rgba(253,250,244,0.45); }
+
+.domaines__grille {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.domaine {
+  padding: 3rem 2.5rem 3rem 0;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  position: relative;
+}
+.domaine:last-child { border-right: none; padding-right: 0; }
+.domaine:not(:first-child) { padding-left: 2.5rem; }
+
+/* Numéro en fond */
+.domaine__num {
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  display: block;
+  margin-bottom: -1.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* Trait doré animé */
+.domaine__bar {
+  width: 2rem;
+  height: 2px;
+  background: var(--gold);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.6s var(--ease-out);
+  margin-bottom: 1.25rem;
+}
+[data-reveal-stagger].visible .domaine__bar { transform: scaleX(1); }
+[data-reveal-stagger].visible .domaine:nth-child(2) .domaine__bar { transition-delay: 90ms; }
+[data-reveal-stagger].visible .domaine:nth-child(3) .domaine__bar { transition-delay: 180ms; }
+
+.domaine__titre {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+}
+
+.domaine__liste {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.domaine__liste li {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.45;
+}
+.domaine__liste li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .domaines__grille {
+    grid-template-columns: 1fr;
+    border-top: none;
+  }
+  .domaine {
+    border-right: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 2.5rem 0;
+  }
+  .domaine:not(:first-child) { padding-left: 0; }
+}
+</style>

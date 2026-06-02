@@ -1,0 +1,191 @@
+---
+---
+
+<section class="hero" id="hero">
+  <!-- Ligne diagonale décorative avec parallaxe -->
+  <div class="hero__decor" aria-hidden="true">
+    <svg width="600" height="600" viewBox="0 0 600 600" fill="none">
+      <line x1="0" y1="600" x2="600" y2="0" stroke="rgba(201,160,90,0.12)" stroke-width="1"/>
+      <line x1="80" y1="600" x2="600" y2="80" stroke="rgba(201,160,90,0.06)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="container hero__inner">
+    <!-- Colonne gauche : texte -->
+    <div class="hero__text">
+      <span class="hero__eyebrow">Avocate — La Roche-sur-Yon</span>
+
+      <div class="hero__title-wrap">
+        <h1 class="hero__title">
+          <span class="curtain-line">Défendre</span>
+          <span class="curtain-line delay-1"><em>ce qui compte.</em></span>
+        </h1>
+      </div>
+
+      <p class="hero__sub curtain-fade">
+        Droit pénal &nbsp;·&nbsp; Famille &nbsp;·&nbsp; Stupéfiants
+      </p>
+
+      <div class="hero__actions curtain-fade delay-2">
+        <a href="#contact" class="btn btn-gold hero-cta">Prendre contact</a>
+        <a href="#domaines" class="btn btn-outline-light">Mes domaines</a>
+      </div>
+    </div>
+
+    <!-- Colonne droite : initiales monumentales -->
+    <div class="hero__initials" aria-hidden="true">
+      <span>EH</span>
+    </div>
+  </div>
+
+  <!-- Indicateur scroll -->
+  <div class="hero__scroll" aria-hidden="true">
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>
+
+<style>
+.hero {
+  position: relative;
+  min-height: 100svh;
+  background-color: var(--ink);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Décoration parallaxe */
+.hero__decor {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Layout */
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding-top: calc(var(--nav-height) + 4rem);
+  padding-bottom: 6rem;
+  gap: 2rem;
+}
+
+/* Texte gauche */
+.hero__eyebrow {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 2.5rem;
+  animation: fadeIn 0.6s cubic-bezier(0.22,1,0.36,1) 0.1s both;
+}
+
+/* Curtain reveal sur chaque ligne */
+.hero__title-wrap { overflow: hidden; margin-bottom: 1.75rem; }
+.hero__title {
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.05;
+}
+.hero__title em { font-style: italic; color: rgba(253,250,244,0.6); }
+
+.curtain-line {
+  display: block;
+  animation: slideUp 0.9s cubic-bezier(0.22,1,0.36,1) both;
+}
+.curtain-line.delay-1 { animation-delay: 0.15s; }
+
+.curtain-fade {
+  animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+.hero__sub {
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 2.5rem;
+  animation-delay: 0.55s;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  animation-delay: 0.75s;
+}
+.hero__actions.curtain-fade { animation-delay: 0.75s; }
+
+/* Colonne droite */
+.hero__initials {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2rem;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  animation: fadeIn 1.2s var(--ease-out) 0.4s forwards;
+}
+.hero__initials span {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(9rem, 16vw, 16rem);
+  font-weight: 500;
+  color: rgba(255,255,255,0.035);
+  line-height: 1;
+  will-change: transform;
+}
+
+/* Scroll indicator */
+.hero__scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fadeIn 0.8s cubic-bezier(0.22,1,0.36,1) 1.2s both;
+}
+.hero__scroll-line {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  margin: 0 auto;
+  animation: scrollPulse 2s ease-in-out 1.4s infinite;
+}
+
+/* Keyframes */
+@keyframes slideUp {
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.5; transform: scaleY(1); }
+  50%       { opacity: 1;   transform: scaleY(1.15); }
+}
+
+@media (max-width: 768px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__initials { display: none; }
+  .hero__title { font-size: clamp(2.8rem, 9vw, 4rem); }
+}
+</style>
