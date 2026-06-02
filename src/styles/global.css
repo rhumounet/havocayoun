@@ -133,6 +133,11 @@ p { max-width: 68ch; }
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .section { padding: 3.5rem 0; }
+  .container { padding: 0 1.25rem; }
+}
+
 .section-label {
   font-family: var(--font-sans);
   font-size: 0.75rem;

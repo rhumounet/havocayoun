@@ -134,6 +134,9 @@ const domaines = [
 .domaine__item svg { color: var(--color-accent); flex-shrink: 0; }
 
 @media (max-width: 900px) {
-  .domaines__grille { grid-template-columns: 1fr; max-width: 560px; }
+  .domaines__grille { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .domaines__grille { grid-template-columns: 1fr; }
 }
 </style>

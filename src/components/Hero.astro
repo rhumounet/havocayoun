@@ -86,9 +86,13 @@
   gap: 1rem;
 }
 
+@media (max-width: 767px) {
+  .hero__arc { width: 340px; height: 340px; right: -40px; bottom: -40px; }
+  .hero__content { max-width: 100%; }
+}
 @media (max-width: 480px) {
   .hero__actions { flex-direction: column; }
-  .hero__actions .btn { justify-content: center; }
-  .hero__arc { width: 320px; height: 320px; right: -40px; bottom: -40px; }
+  .hero__actions .btn { justify-content: center; width: 100%; }
+  .hero__arc { width: 260px; height: 260px; right: -20px; bottom: -20px; }
 }
 </style>
