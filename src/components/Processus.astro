@@ -1,0 +1,135 @@
+---
+const etapes = [
+  {
+    numero: '1',
+    titre: 'Premier contact',
+    texte: 'Un entretien confidentiel, sans engagement. Vous exposez votre situation et je vous donne une première lecture.',
+  },
+  {
+    numero: '2',
+    titre: 'Analyse du dossier',
+    texte: 'J\'étudie en profondeur les éléments de votre affaire et identifie les options qui s\'offrent à vous.',
+  },
+  {
+    numero: '3',
+    titre: 'Stratégie et défense',
+    texte: 'Nous construisons ensemble une approche adaptée à vos objectifs et à la réalité de votre situation.',
+  },
+  {
+    numero: '4',
+    titre: 'Suivi jusqu\'à la résolution',
+    texte: 'Je suis présente à chaque audience, chaque étape — et vous tiens informé de l\'avancement à tout moment.',
+  },
+];
+---
+
+<section class="section processus grain" id="processus">
+  <div class="container">
+    <p class="section-label fade-in">Démarche</p>
+    <h2 class="processus__titre fade-in">Comment ça se passe&nbsp;?</h2>
+    <p class="processus__intro fade-in">
+      Avoir recours à un avocat peut sembler intimidant. Voici comment nous allons travailler ensemble,
+      pas à pas.
+    </p>
+
+    <div class="processus__timeline">
+      {etapes.map((e, i) => (
+        <div class="etape fade-in" style={`transition-delay: ${i * 90}ms`}>
+          <div class="etape__head">
+            <div class="etape__numero">{e.numero}</div>
+            {i < etapes.length - 1 && <div class="etape__trait" aria-hidden="true" />}
+          </div>
+          <h3 class="etape__titre">{e.titre}</h3>
+          <p class="etape__texte">{e.texte}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.processus {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.processus .section-label {
+  color: rgba(181,118,58,0.85);
+}
+
+.processus__titre {
+  color: var(--color-white);
+  margin-bottom: 1rem;
+}
+
+.processus__intro {
+  color: rgba(253,250,246,0.65);
+  font-size: 1rem;
+  margin-bottom: 3.5rem;
+  max-width: 560px;
+}
+
+.processus__timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.etape {
+  padding-right: 2rem;
+}
+
+.etape__head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.etape__numero {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.etape__trait {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin-left: 0.75rem;
+}
+
+.etape__titre {
+  font-size: 1.1rem;
+  color: var(--color-white);
+  margin-bottom: 0.6rem;
+}
+
+.etape__texte {
+  font-size: 0.92rem;
+  color: rgba(253,250,246,0.62);
+  line-height: 1.7;
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  .processus__timeline {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  .etape__trait { display: none; }
+  .etape { padding-right: 0; }
+}
+
+@media (max-width: 500px) {
+  .processus__timeline { grid-template-columns: 1fr; gap: 2rem; }
+}
+</style>

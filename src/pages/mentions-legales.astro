@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<Layout
+  title="Mentions légales — Eva Hayoun, Avocate"
+  description="Mentions légales du site d'Eva Hayoun, avocate au Barreau de La Roche-sur-Yon."
+>
+  <Nav />
+  <main class="ml-main">
+    <div class="container ml-inner">
+      <h1>Mentions légales</h1>
+
+      <section>
+        <h2>Éditeur du site</h2>
+        <p>
+          Eva Hayoun<br />
+          Avocate inscrite au Barreau de La Roche-sur-Yon<br />
+          [Adresse du cabinet]<br />
+          [Code postal] La Roche-sur-Yon<br />
+          Tél. : 00 00 00 00 00<br />
+          Email : contact@eva-hayoun-avocat.fr
+        </p>
+      </section>
+
+      <section>
+        <h2>Hébergement</h2>
+        <p>[Nom de l'hébergeur, adresse, contact]</p>
+      </section>
+
+      <section>
+        <h2>Propriété intellectuelle</h2>
+        <p>
+          L'ensemble du contenu de ce site (textes, visuels, mise en page) est la propriété exclusive
+          d'Eva Hayoun. Toute reproduction ou représentation, totale ou partielle, est interdite sans
+          autorisation préalable.
+        </p>
+      </section>
+
+      <section>
+        <h2>Données personnelles</h2>
+        <p>
+          Les informations transmises via le formulaire de contact sont utilisées exclusivement pour
+          répondre à votre demande. Elles ne sont pas transmises à des tiers. Conformément au RGPD,
+          vous disposez d'un droit d'accès, de rectification et de suppression de vos données en
+          contactant : contact@eva-hayoun-avocat.fr
+        </p>
+      </section>
+
+      <section>
+        <h2>Responsabilité</h2>
+        <p>
+          Le contenu de ce site est fourni à titre informatif et ne constitue pas un conseil juridique.
+          Toute situation particulière requiert une consultation personnalisée.
+        </p>
+      </section>
+
+      <a href="/" class="btn btn-primary" style="margin-top:1rem;">← Retour à l'accueil</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+.ml-main {
+  padding-top: calc(var(--nav-height) + 4rem);
+  padding-bottom: 5rem;
+  background: var(--color-bg);
+  min-height: 100vh;
+}
+
+.ml-inner {
+  max-width: 720px;
+}
+
+.ml-inner h1 {
+  margin-bottom: 3rem;
+}
+
+.ml-inner section {
+  margin-bottom: 2.5rem;
+}
+
+.ml-inner h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-primary);
+}
+
+.ml-inner p {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.75;
+}
+</style>

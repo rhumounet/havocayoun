@@ -1,0 +1,94 @@
+---
+---
+
+<section class="hero grain" id="hero" aria-label="Accueil">
+  <!-- Decorative arc -->
+  <svg class="hero__arc" aria-hidden="true" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="500" cy="500" r="420" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+    <circle cx="500" cy="500" r="290" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    <line x1="0" y1="600" x2="600" y2="0" stroke="rgba(181,118,58,0.18)" stroke-width="1"/>
+  </svg>
+
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="section-label">Avocate au Barreau de La Roche-sur-Yon</p>
+      <h1 class="hero__title">
+        À vos côtés<br />
+        <em>quand les enjeux<br />sont les plus grands.</em>
+      </h1>
+      <p class="hero__sub">
+        Droit pénal &nbsp;·&nbsp; Droit de la famille &nbsp;·&nbsp; Affaires de stupéfiants<br />
+        La Roche-sur-Yon &nbsp;·&nbsp; Nantes &nbsp;·&nbsp; Ille-et-Vilaine &nbsp;·&nbsp; Orléans
+      </p>
+      <div class="hero__actions">
+        <a href="#contact" class="btn btn-primary">Prendre contact</a>
+        <a href="#domaines" class="btn btn-outline">Mes domaines d'intervention</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.hero {
+  min-height: 100svh;
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero__arc {
+  position: absolute;
+  right: -80px;
+  bottom: -80px;
+  width: 560px;
+  height: 560px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  padding-top: calc(var(--nav-height) + 3rem);
+  padding-bottom: 5rem;
+}
+
+.hero__content { max-width: 680px; }
+
+.hero__content .section-label {
+  color: rgba(181, 118, 58, 0.9);
+  margin-bottom: 1.25rem;
+}
+
+.hero__title {
+  color: var(--color-white);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+.hero__title em {
+  font-style: italic;
+  color: rgba(244, 239, 230, 0.75);
+}
+
+.hero__sub {
+  font-size: 0.95rem;
+  color: rgba(253, 250, 246, 0.65);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 100%;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .hero__actions { flex-direction: column; }
+  .hero__actions .btn { justify-content: center; }
+  .hero__arc { width: 320px; height: 320px; right: -40px; bottom: -40px; }
+}
+</style>

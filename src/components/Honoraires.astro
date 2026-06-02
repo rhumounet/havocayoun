@@ -1,0 +1,104 @@
+---
+---
+
+<section class="section honoraires" id="honoraires">
+  <div class="container honoraires__inner">
+    <div class="honoraires__texte">
+      <p class="section-label fade-in">Tarifs</p>
+      <h2 class="fade-in">Honoraires</h2>
+      <div class="honoraires__corps fade-in">
+        <p>
+          Mes honoraires sont fixés en tenant compte de la nature et de la complexité de l'affaire,
+          du temps consacré et des diligences requises. Une convention d'honoraires est systématiquement
+          établie lors de notre premier rendez-vous, pour une totale transparence.
+        </p>
+        <p>
+          Je peux intervenir dans le cadre de l'<strong>aide juridictionnelle</strong> pour les personnes
+          dont les ressources sont insuffisantes pour assumer seules les frais de justice.
+        </p>
+        <p>
+          N'hésitez pas à me contacter pour en savoir plus — les questions d'honoraires font partie
+          intégrante du premier entretien.
+        </p>
+      </div>
+      <a href="#contact" class="btn btn-primary fade-in" style="margin-top:0.5rem; align-self:flex-start;">
+        Prendre contact
+      </a>
+    </div>
+
+    <div class="honoraires__encart fade-in">
+      <div class="encart__item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12h6m-3-3v6"/><circle cx="12" cy="12" r="10"/></svg>
+        <div>
+          <strong>Convention d'honoraires</strong>
+          <p>Établie systématiquement par écrit avant toute intervention.</p>
+        </div>
+      </div>
+      <div class="encart__item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v10l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+        <div>
+          <strong>Aide juridictionnelle</strong>
+          <p>Acceptée pour les personnes éligibles.</p>
+        </div>
+      </div>
+      <div class="encart__item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <div>
+          <strong>Premier entretien</strong>
+          <p>Les modalités sont discutées en toute transparence dès notre premier rendez-vous.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.honoraires { background: var(--color-bg); }
+
+.honoraires__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.honoraires__texte {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.honoraires__corps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.honoraires__corps p {
+  font-size: 0.97rem;
+  color: var(--color-text);
+  line-height: 1.75;
+}
+.honoraires__corps strong { color: var(--color-primary); }
+
+.honoraires__encart {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.encart__item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.encart__item svg { color: var(--color-accent); flex-shrink: 0; margin-top: 2px; }
+.encart__item strong { display: block; font-size: 0.95rem; color: var(--color-primary); margin-bottom: 0.25rem; }
+.encart__item p { font-size: 0.88rem; color: var(--color-text-light); line-height: 1.55; max-width: 100%; }
+
+@media (max-width: 768px) {
+  .honoraires__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+</style>

@@ -1,0 +1,85 @@
+---
+const valeurs = [
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2v4l-4-4H9a1.994 1.994 0 0 1-1.414-.586"/><path d="M3 6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 4V6z"/></svg>`,
+    titre: 'Écoute',
+    texte: 'Chaque situation est unique. Je prends le temps de comprendre la vôtre avant toute chose — sans précipitation, ni jugement.',
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`,
+    titre: 'Clarté',
+    texte: 'Je vous explique chaque étape dans un langage accessible, sans jargon inutile. Comprendre ce qui vous arrive, c\'est déjà reprendre le contrôle.',
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    titre: 'Engagement',
+    texte: 'Je défends vos intérêts avec constance, de la première consultation jusqu\'à la résolution de votre affaire. Vous n\'êtes pas seul.',
+  },
+  {
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636-.707.707M21 12h-1M4 12H3m3.343-5.657-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>`,
+    titre: 'Pragmatisme',
+    texte: 'Des solutions concrètes, adaptées à votre réalité et à vos objectifs. Le droit au service de votre vie, pas l\'inverse.',
+  },
+];
+---
+
+<section class="section valeurs" id="valeurs">
+  <div class="container">
+    <p class="section-label fade-in">Mon approche</p>
+    <h2 class="valeurs__titre fade-in">Ce qui guide ma pratique</h2>
+    <div class="valeurs__grille">
+      {valeurs.map((v, i) => (
+        <div class="valeur fade-in" style={`transition-delay: ${i * 80}ms`}>
+          <div class="valeur__icon" set:html={v.icon} />
+          <h3 class="valeur__titre">{v.titre}</h3>
+          <p class="valeur__texte">{v.texte}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.valeurs { background: var(--color-bg); }
+
+.valeurs__titre {
+  margin-bottom: 3rem;
+  max-width: 480px;
+}
+
+.valeurs__grille {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.valeur {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.valeur__icon {
+  color: var(--color-accent);
+  width: 28px;
+  height: 28px;
+}
+
+.valeur__titre {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+.valeur__texte {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .valeurs__grille { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .valeurs__grille { grid-template-columns: 1fr; }
+}
+</style>

@@ -1,0 +1,245 @@
+---
+const zones = [
+  'La Roche-sur-Yon (Vendée)',
+  'Nantes',
+  'Ille-et-Vilaine',
+  'Orléans et alentours',
+];
+---
+
+<section class="section contact" id="contact">
+  <div class="container contact__inner">
+    <div class="contact__intro">
+      <p class="section-label fade-in">Me contacter</p>
+      <h2 class="fade-in">Parlons de votre situation</h2>
+      <p class="contact__texte fade-in">
+        Décrivez brièvement votre situation dans le formulaire ci-contre. Je vous répondrai dans
+        les meilleurs délais pour convenir d'un premier entretien confidentiel.
+      </p>
+
+      <div class="contact__coordonnees fade-in">
+        <div class="coord__item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:+33000000000">00 00 00 00 00</a>
+        </div>
+        <div class="coord__item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <a href="mailto:contact@eva-hayoun-avocat.fr">contact@eva-hayoun-avocat.fr</a>
+        </div>
+      </div>
+
+      <div class="contact__zones fade-in">
+        <p class="zones__titre">Zones d'intervention</p>
+        <ul class="zones__liste">
+          {zones.map(z => (
+            <li class="zones__item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              {z}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <form
+      class="contact__form fade-in"
+      action="mailto:contact@eva-hayoun-avocat.fr"
+      method="post"
+      enctype="text/plain"
+      novalidate
+    >
+      <div class="form__row">
+        <div class="form__group">
+          <label for="prenom">Prénom</label>
+          <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" autocomplete="given-name" />
+        </div>
+        <div class="form__group">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="nom" placeholder="Votre nom" autocomplete="family-name" />
+        </div>
+      </div>
+      <div class="form__group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="votre@email.fr" autocomplete="email" />
+      </div>
+      <div class="form__group">
+        <label for="telephone">Téléphone <span class="label-opt">(optionnel)</span></label>
+        <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00" autocomplete="tel" />
+      </div>
+      <div class="form__group">
+        <label for="domaine">Domaine concerné</label>
+        <select id="domaine" name="domaine">
+          <option value="" disabled selected>Sélectionnez…</option>
+          <option value="penal">Droit pénal</option>
+          <option value="famille">Droit de la famille</option>
+          <option value="stupefiants">Affaires de stupéfiants</option>
+          <option value="autre">Autre / Je ne sais pas</option>
+        </select>
+      </div>
+      <div class="form__group">
+        <label for="message">Votre situation <span class="label-opt">(résumé)</span></label>
+        <textarea id="message" name="message" rows="5" placeholder="Décrivez brièvement votre situation…"></textarea>
+      </div>
+      <p class="form__confidentialite">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Toute communication avec un avocat est couverte par le secret professionnel.
+      </p>
+      <button type="submit" class="btn btn-primary form__submit">Envoyer ma demande</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>© {new Date().getFullYear()} Eva Hayoun — Avocate au Barreau de La Roche-sur-Yon</p>
+    <a href="/mentions-legales" class="footer__link">Mentions légales</a>
+  </div>
+</footer>
+
+<style>
+.contact { background: var(--color-bg-alt); }
+
+.contact__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.contact__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact__texte {
+  font-size: 0.97rem;
+  color: var(--color-text-light);
+  line-height: 1.75;
+}
+
+.contact__coordonnees {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.coord__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+}
+.coord__item svg { color: var(--color-accent); flex-shrink: 0; }
+.coord__item a { color: var(--color-primary); font-weight: 500; transition: color 0.2s; }
+.coord__item a:hover { color: var(--color-accent); }
+
+.zones__titre {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  margin-bottom: 0.6rem;
+  max-width: 100%;
+}
+.zones__liste { display: flex; flex-direction: column; gap: 0.45rem; }
+.zones__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+  color: var(--color-text);
+}
+.zones__item svg { color: var(--color-accent); flex-shrink: 0; }
+
+/* Form */
+.contact__form {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.form__group label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+.label-opt { font-weight: 400; color: var(--color-text-light); font-size: 0.8rem; }
+
+.form__group input,
+.form__group select,
+.form__group textarea {
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  color: var(--color-text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.form__group input:focus,
+.form__group select:focus,
+.form__group textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(181,118,58,0.12);
+}
+.form__group textarea { resize: vertical; min-height: 100px; }
+
+.form__confidentialite {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  line-height: 1.5;
+  max-width: 100%;
+}
+.form__confidentialite svg { color: var(--color-accent); flex-shrink: 0; margin-top: 1px; }
+
+.form__submit { align-self: flex-start; }
+
+/* Footer */
+.footer {
+  background: var(--color-primary-dark, #152D4A);
+  padding: 1.5rem 0;
+}
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.footer__inner p {
+  font-size: 0.82rem;
+  color: rgba(253,250,246,0.5);
+  max-width: 100%;
+}
+.footer__link {
+  font-size: 0.82rem;
+  color: rgba(253,250,246,0.5);
+  transition: color 0.2s;
+}
+.footer__link:hover { color: var(--color-accent); }
+
+@media (max-width: 768px) {
+  .contact__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .form__row { grid-template-columns: 1fr; }
+}
+</style>

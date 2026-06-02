@@ -1,0 +1,108 @@
+---
+---
+
+<section class="section a-propos" id="a-propos">
+  <div class="container a-propos__inner">
+    <div class="a-propos__texte">
+      <p class="section-label fade-in">À propos</p>
+      <h2 class="fade-in">Qui suis-je&nbsp;?</h2>
+
+      <div class="a-propos__corps fade-in">
+        <p>
+          Je suis Eva Hayoun, avocate inscrite au Barreau de La Roche-sur-Yon. J'exerce principalement
+          en Vendée et interviens régulièrement à Nantes, en Ille-et-Vilaine et aux alentours d'Orléans.
+        </p>
+        <p>
+          Si j'ai choisi ces domaines du droit — le pénal, la famille, les affaires de stupéfiants —
+          c'est parce qu'ils touchent à l'essentiel : la liberté, le lien familial, l'avenir. Ce sont
+          des matières où l'enjeu humain est immense, et où la qualité de l'accompagnement fait
+          une réelle différence.
+        </p>
+        <p>
+          Mon engagement va au-delà de la technique juridique. Je crois profondément que tout le monde
+          mérite une défense sérieuse, une oreille attentive, et un avocat qui prend le temps d'expliquer
+          — sans jugement, sans condescendance.
+        </p>
+        <p>
+          Lorsque vous franchissez ma porte, vous ne devenez pas un dossier. Vous êtes une personne,
+          avec une situation qui lui est propre, et nous construisons ensemble la meilleure réponse possible.
+        </p>
+      </div>
+
+      <a href="#contact" class="btn btn-primary fade-in" style="margin-top:0.5rem; align-self:flex-start;">
+        Prendre rendez-vous
+      </a>
+    </div>
+
+    <div class="a-propos__visuel fade-in" aria-hidden="true">
+      <!-- Placeholder en attendant une photo -->
+      <div class="a-propos__placeholder">
+        <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="80" cy="80" r="79" stroke="rgba(181,118,58,0.25)" stroke-width="1"/>
+          <circle cx="80" cy="80" r="55" stroke="rgba(181,118,58,0.15)" stroke-width="1"/>
+          <text x="80" y="96" text-anchor="middle" font-family="Cormorant Garamond, serif"
+                font-size="52" font-weight="500" fill="rgba(181,118,58,0.5)">EH</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.a-propos { background: var(--color-bg); }
+
+.a-propos__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 5rem;
+  align-items: center;
+}
+
+.a-propos__texte {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 600px;
+}
+
+.a-propos__corps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.a-propos__corps p {
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.75;
+}
+
+.a-propos__visuel {
+  flex-shrink: 0;
+}
+
+.a-propos__placeholder {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: var(--color-bg-alt);
+  border: 1.5px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.a-propos__placeholder svg {
+  width: 160px;
+  height: 160px;
+}
+
+@media (max-width: 768px) {
+  .a-propos__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .a-propos__visuel { order: -1; }
+  .a-propos__placeholder { width: 160px; height: 160px; }
+  .a-propos__placeholder svg { width: 110px; height: 110px; }
+}
+</style>

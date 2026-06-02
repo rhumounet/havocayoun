@@ -1,0 +1,139 @@
+---
+const domaines = [
+  {
+    id: 'penal',
+    numero: '01',
+    titre: 'Droit pénal',
+    accroche: 'Face à une mise en cause pénale, chaque heure compte. Je vous défends à chaque stade de la procédure.',
+    situations: [
+      'Assistance en garde à vue',
+      'Instruction judiciaire',
+      'Comparution devant le tribunal',
+      'Procédures d\'appel',
+      'Délits et crimes',
+      'Victimes d\'infraction',
+    ],
+  },
+  {
+    id: 'famille',
+    numero: '02',
+    titre: 'Droit de la famille',
+    accroche: 'Les ruptures et les conflits familiaux sont parmi les épreuves les plus douloureuses. Je vous accompagne avec humanité et fermeté.',
+    situations: [
+      'Divorce et séparation',
+      'Garde des enfants',
+      'Pension alimentaire',
+      'Autorité parentale',
+      'Adoption et filiation',
+      'Protection des majeurs vulnérables',
+    ],
+  },
+  {
+    id: 'stupefiants',
+    numero: '03',
+    titre: 'Affaires de stupéfiants',
+    accroche: 'Ces affaires appellent une défense rigoureuse et sans préjugé. Votre situation mérite d\'être entendue et défendue.',
+    situations: [
+      'Usage simple',
+      'Trafic et revente',
+      'Association de malfaiteurs',
+      'Garde à vue et mise en examen',
+      'Contrôles douaniers',
+      'Saisies et confiscations',
+    ],
+  },
+];
+---
+
+<section class="section domaines" id="domaines">
+  <div class="container">
+    <p class="section-label fade-in">Expertise</p>
+    <h2 class="domaines__titre fade-in">Domaines d'intervention</h2>
+    <div class="domaines__grille">
+      {domaines.map((d, i) => (
+        <article class="domaine fade-in" style={`transition-delay: ${i * 100}ms`}>
+          <span class="domaine__numero">{d.numero}</span>
+          <h3 class="domaine__titre">{d.titre}</h3>
+          <p class="domaine__accroche">{d.accroche}</p>
+          <ul class="domaine__liste">
+            {d.situations.map(s => (
+              <li class="domaine__item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                {s}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.domaines { background: var(--color-bg-alt); }
+
+.domaines__titre {
+  margin-bottom: 3rem;
+}
+
+.domaines__grille {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.domaine {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem;
+  border: 1px solid var(--color-border);
+  transition: box-shadow 0.25s, transform 0.25s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.domaine:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.domaine__numero {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--color-accent);
+  opacity: 0.45;
+  line-height: 1;
+}
+
+.domaine__titre {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+}
+
+.domaine__accroche {
+  font-size: 0.92rem;
+  color: var(--color-text-light);
+  line-height: 1.65;
+}
+
+.domaine__liste {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.domaine__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+.domaine__item svg { color: var(--color-accent); flex-shrink: 0; }
+
+@media (max-width: 900px) {
+  .domaines__grille { grid-template-columns: 1fr; max-width: 560px; }
+}
+</style>

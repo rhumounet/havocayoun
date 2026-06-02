@@ -1,0 +1,181 @@
+---
+const links = [
+  { href: '#domaines', label: 'Domaines' },
+  { href: '#a-propos', label: 'À propos' },
+  { href: '#processus', label: 'Démarche' },
+  { href: '#honoraires', label: 'Honoraires' },
+];
+---
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="/" class="nav__logo" aria-label="Accueil">
+      <span class="nav__logo-name">Eva Hayoun</span>
+      <span class="nav__logo-title">Avocate</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Navigation principale">
+      {links.map(l => (
+        <a href={l.href} class="nav__link">{l.label}</a>
+      ))}
+      <a href="#contact" class="btn btn-primary nav__cta">Contact</a>
+    </nav>
+
+    <button class="nav__burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav__mobile" id="mobile-menu" aria-hidden="true">
+    {links.map(l => (
+      <a href={l.href} class="nav__mobile-link">{l.label}</a>
+    ))}
+    <a href="#contact" class="nav__mobile-link nav__mobile-cta">Prendre contact</a>
+  </div>
+</header>
+
+<script>
+  const burger = document.querySelector('.nav__burger') as HTMLButtonElement;
+  const menu   = document.getElementById('mobile-menu')!;
+  const nav    = document.querySelector('.nav') as HTMLElement;
+
+  burger?.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    menu.setAttribute('aria-hidden', String(open));
+    burger.classList.toggle('open', !open);
+    menu.classList.toggle('open', !open);
+  });
+
+  // Close on link click
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      burger.classList.remove('open');
+      menu.classList.remove('open');
+    });
+  });
+
+  // Scroll shadow
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
+
+<style>
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  background: rgba(253, 250, 246, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.nav.scrolled {
+  border-bottom-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.nav__logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.nav__logo-name {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.nav__logo-title {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.nav__link {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+.nav__link:hover { color: var(--color-accent); }
+.nav__cta { padding: 0.55rem 1.25rem; font-size: 0.85rem; }
+
+/* Burger */
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  padding: 2px;
+}
+.nav__burger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+  transform-origin: center;
+}
+.nav__burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__burger.open span:nth-child(2) { opacity: 0; }
+.nav__burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu */
+.nav__mobile {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.nav__mobile.open { max-height: 400px; }
+.nav__mobile-link {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-bg-alt);
+  transition: background 0.15s;
+}
+.nav__mobile-link:hover { background: var(--color-bg-alt); }
+.nav__mobile-cta {
+  color: var(--color-accent);
+  font-weight: 600;
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .nav__links { display: none; }
+  .nav__burger { display: flex; }
+  .nav { height: auto; min-height: var(--nav-height); }
+  .nav__inner { height: var(--nav-height); }
+}
+</style>
